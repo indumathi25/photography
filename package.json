@@ -23,11 +23,10 @@
     "eslint-config-next": "16.0.3",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.6",
-    "unlighthouse": "^0.17.4",
-    "puppeteer": "^21.0.0",
-    "wait-on": "^7.0.2",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "unlighthouse": "^0.17.4",
+    "wait-on": "^7.2.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
