@@ -72,18 +72,20 @@ jobs:
         run: npm ci
 
       - name: Install Puppeteer and wait-on (for CI)
-        run: npm install --no-save puppeteer@21.11.0 wait-on@7.2.0
+        run: npm install --no-save puppeteer@24.15.0 wait-on@7.2.0
 
       - name: Start Next.js production server
         run: |
-          npm run start > server.log 2>&1 &
+          # Bind to 0.0.0.0 and explicit port so wait-on can reliably connect
+          npx next start -p 3000 -H 0.0.0.0 > server.log 2>&1 &
           SERVER_PID=$!
           echo "Server PID: $SERVER_PID"
+          # give the process a short head start before polling
           sleep 5
           echo "Waiting for server to be ready..."
 
       - name: Wait for server
-        run: npx wait-on http://localhost:3000 --timeout 120000 --interval 1000
+        run: npx wait-on http://localhost:3000 --timeout 180000 --interval 1000
 
       - name: Check server logs (if wait-on failed)
         if: failure()
