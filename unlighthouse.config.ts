@@ -30,11 +30,6 @@ export default defineUnlighthouseConfig({
       seo: 90,
     },
   },
-  scanner: {
-    // Faster scans for CI
-    samples: 1,
-    throttle: false,
-  },
 
   debug: true,
 });
