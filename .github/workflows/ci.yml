@@ -76,11 +76,21 @@ jobs:
 
       - name: Start Next.js production server
         run: |
-          npm run start &
-          echo "Starting server in background"
+          npm run start > server.log 2>&1 &
+          SERVER_PID=$!
+          echo "Server PID: $SERVER_PID"
+          sleep 5
+          echo "Waiting for server to be ready..."
 
       - name: Wait for server
-        run: npx wait-on http://localhost:3000 --timeout 60000
+        run: npx wait-on http://localhost:3000 --timeout 120000 --interval 1000
+
+      - name: Check server logs (if wait-on failed)
+        if: failure()
+        run: |
+          echo "Server logs:"
+          cat server.log || echo "No server.log found"
+          ps aux | grep node || echo "No node processes running"
 
       - name: Run Unlighthouse CI (performance & accessibility)
         run: |
