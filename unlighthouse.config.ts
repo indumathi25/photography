@@ -17,6 +17,5 @@ export default defineUnlighthouseConfig({
       accessibility: 90,
     },
     reporter: 'jsonExpanded',
-    outputPath: '.unlighthouse',
   },
 });
