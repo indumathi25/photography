@@ -20,15 +20,20 @@ export default defineUnlighthouseConfig({
 
   // CI settings — match options used by the CI command
   ci: {
-    // Fail CI if any page scores below these budgets
-    budget: {
-      performance: 80,
-      accessibility: 90,
-    },
-    // When running in CI we want static output (the CLI flag --build-static also covers this)
+    // Generate static reports
     buildStatic: true,
-    // Reporter to use for CI output
-    reporter: 'jsonExpanded',
+    // Set performance budgets
+    budget: {
+      performance: 90,
+      accessibility: 95,
+      'best-practices': 90,
+      seo: 90,
+    },
+  },
+  scanner: {
+    // Faster scans for CI
+    samples: 1,
+    throttle: false,
   },
 
   debug: true,
