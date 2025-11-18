@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const IMAGES = [
   {
@@ -41,10 +42,12 @@ export default function Gallery() {
               className='overflow-hidden rounded-lg bg-white shadow'
             >
               <a href={img.src} target='_blank' rel='noreferrer noopener'>
-                <img
+                <Image
                   loading='lazy'
                   src={img.src}
                   alt={img.title}
+                  width={400}
+                  height={224}
                   className='w-full h-56 object-cover transform hover:scale-105 transition duration-300'
                 />
               </a>

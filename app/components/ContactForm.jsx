@@ -7,7 +7,7 @@ export default function ContactForm() {
       <div className='container-padding'>
         <h2 className='text-2xl font-semibold'>Get in touch</h2>
         <p className='mt-2 text-gray-600'>
-          I'm available for commissions and collaborations. Send a message
+          I&apos;m available for commissions and collaborations. Send a message
           below.
         </p>
 
