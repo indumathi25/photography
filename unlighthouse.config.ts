@@ -1,4 +1,4 @@
-import { defineUnlighthouseConfig } from 'unlighthouse/config'
+import { defineUnlighthouseConfig } from 'unlighthouse/config';
 
 export default defineUnlighthouseConfig({
   site: 'http://localhost:3000',
@@ -19,4 +19,4 @@ export default defineUnlighthouseConfig({
     reporter: 'jsonExpanded',
     outputPath: '.unlighthouse',
   },
-})
+});
